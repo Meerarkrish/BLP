@@ -837,29 +837,3 @@ def api_refresh_tm():
     return jsonify(ok=ok, club=myclb(), url=tm_squad_url(myclb()))
 
 
-if __name__ == "__main__":
-    init_db()
-    d83 = REDCAP_TOKEN_83 == "DEMO_TOKEN_83"
-    d84 = REDCAP_TOKEN_84 == "DEMO_TOKEN_84"
-    print("\n" + "="*66)
-    print("  Bundesliga-Register — Verletzungsportal")
-    print("  Browser:      http://localhost:5000")
-    print(f"  PID 83:       {'DEMO' if d83 else 'LIVE'}")
-    print(f"  PID 84:       {'DEMO' if d84 else 'LIVE'}")
-    print(f"  Transfermarkt: saison_id/{TM_SEASON}/plus/1  (DOB + age view)")
-    print(f"  Datenbank:    {DATABASE}")
-    print()
-    print("  Umgebungsvariablen:")
-    print("    export REDCAP_TOKEN_83='...'")
-    print("    export REDCAP_TOKEN_84='...'")
-    print("    export REDCAP_SURVEY_HASH='...'")
-    print()
-    print("  Arzt-Zugänge:")
-    for u,(pw,club) in PHYSICIAN_ACCOUNTS.items():
-        print(f"    {u:22} → {CLUB_CONFIG.get(club,{}).get('name',club)}")
-    print()
-    print("  Beispiel-URLs (Transfermarkt /plus/1):")
-    for pfx in list(CLUB_CONFIG)[:3]:
-        print(f"    {pfx}: {tm_squad_url(pfx)}")
-    print("="*66+"\n")
-    app.run(debug=True, host="0.0.0.0", port=5000)

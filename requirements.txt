@@ -1,15 +1,4 @@
 flask 
 requests 
 beautifulsoup4
-os
-json
-sqlite3 
-secrets
-re
-datetime
-timedelta
-contextlib
-contextmanager
-functools
-wraps
 
